@@ -36,3 +36,144 @@
     transform: rotate(360deg);
   }
 }
+/* TEMPLATE CSS END, MY CSS START */
+html {
+    background: GREY;
+}
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+body {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    line-height: 1.6;
+    font-family: sans-serif;
+}
+.card {
+    background-image: url('https://lovelytab.com/wp-content/uploads/2019/04/Avengers-Minimalist-Wallpapers-1024x640.jpg');
+    background-size: cover;
+    padding: 10rem 0 0;
+    max-width: 35ch;
+    color:white;
+    /* overflow hidden fixes issue of bottom not having round corners due to card content  */
+    border-radius: .8rem;
+    overflow:hidden;
+
+    transition: transform 500ms ease;
+}
+
+.card-content {
+    --padding: 1.5rem;
+    padding: var(--padding);
+    /* background: hsl(255 50% 50%/.85); */
+    background: linear-gradient(
+        hsl(0 0% 0% / 0),
+        hsl(0 0% 0% / .45) 22%,
+         hsl(0 0% 0%/.85)
+        );
+    transition:all 100ms;
+
+}
+
+
+
+.card-title {
+    position: relative;
+    /* outline:1px solid red; */
+    width: max-content;
+    max-width: 100%;
+}
+.card-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: calc(100% + var(--padding));
+    left: calc(var(--padding) * -1);
+    background: red;
+    /* transform: scale(0); */
+    transform-origin: left;
+    transition: transform 500ms ease;
+
+}
+
+
+
+.card-body {
+    color: rgb(255 255 255/ 0.8);
+}
+.button {
+    cursor:pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: red;
+    padding: 0.5em 1.25em;
+    border-radius:.25rem
+}
+
+.button:hover,
+.button:focus{
+    background: white;
+    color:red;
+}
+@media (hover)
+{
+    .card-content {
+        transform: translateY(74%);
+        transition: transform 500ms ease;
+    }
+    .card:hover .card-content,
+    .card:focus-within .card-content {
+        transform: translateY(0);
+        transition: transform 600ms ease;
+        transition-delay: 500ms;
+    }
+    /* overwrite anumation when using keyboard tab */
+    .card:focus-within .card-content{
+        transition-duration: 500ms;
+    }
+    .card-content > *:not(.card-title) {
+        opacity: 0;
+        transition: opacity 1500ms linear;
+        transition-delay: 50ms;
+    }
+    .card:hover .card-content > *,
+    .card:focus-within .card-content > * {
+        opacity: 1;
+        transition-delay: 1000ms
+    }
+    .card-title::after {
+        transform: scaleX(0);
+    }
+    .card:hover .card-title::after,
+    .card:focus-within .card-title::after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+    .card:hover,
+    .card:focus-within {
+        transform: scale(1.025);
+    }
+
+}
+
+@media (prefers-reduced-motion:reduce)
+{
+    *,
+    *::before,
+    *::after
+    {
+        animation-duration: 0.01ms
+        !important;
+        animation-iteration-count: 1
+        !important;
+        transition-duration: 0.01ms
+        !important;
+        scroll-behavior: auto !important;
+        transition-delay: 0ms !important;
+    }
+}
