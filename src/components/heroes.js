@@ -13,9 +13,15 @@ export const Heroes = () => {
 
         })}
 
+<<<<<<< HEAD
     useEffect(() => {
 
     }, [] )
+=======
+    // useEffect(() => {
+    //
+    // }, [] )
+>>>>>>> a8087fb35df92d40bc8d0a19fc2449143806cca6
 
 
         return(

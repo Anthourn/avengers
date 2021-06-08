@@ -36,7 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+
+
 /* TEMPLATE CSS END, MY CSS START */
+
 html {
     background: GREY;
 }
@@ -47,10 +51,15 @@ html {
 body {
     display: grid;
     min-height: 100vh;
-    place-items: center;
+    /* place-items: center; */
     line-height: 1.6;
     font-family: sans-serif;
 }
+.array{
+    display: flex;
+    flex-wrap: wrap;
+}
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@ CSS CARDS @@@@@@@@@@@@@@@@@@@@@@@@@@ */
 .card {
     background-image: url('https://lovelytab.com/wp-content/uploads/2019/04/Avengers-Minimalist-Wallpapers-1024x640.jpg');
     background-size: cover;
@@ -60,8 +69,9 @@ body {
     /* overflow hidden fixes issue of bottom not having round corners due to card content  */
     border-radius: .8rem;
     overflow:hidden;
-
+    margin: 5ch;
     transition: transform 500ms ease;
+    background-position: center;
 }
 
 .card-content {
@@ -123,8 +133,9 @@ body {
 @media (hover)
 {
     .card-content {
-        transform: translateY(74%);
+        transform: translateY(64%);
         transition: transform 500ms ease;
+        height: 100%;
     }
     .card:hover .card-content,
     .card:focus-within .card-content {
