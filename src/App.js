@@ -1,18 +1,48 @@
 import logo from './logo.svg';
 import './App.css';
-
+import axios from 'axios'
+import React, {useState, useEffect} from 'react'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {Display} from './components/display'
+import Homearray from './components/array.js'
 function App() {
+
+    const [hero, setHero] = useState('Nick Fury')
+    const getHeroes = (name) => {
+        console.log('test')
+        axios.get(`https://gateway.marvel.com:443/v1/public/characters?name=${name}&apikey=a723f1e04ab084a12d0437077b3e90cd
+`).then((response) =>{
+            console.log(response.data)
+
+
+        })}
+    useEffect(() => {
+        // getHeroes(hero)
+        console.log(hero)
+    }, [] )
   return (
+      <Router>
     <div className="App">
       <h1> Avengers initiative </h1>
-      <div class = 'card'>
-      <div class = 'card-content'>
-      <h2 class = 'card-title'>Avenger #</h2>
-      <p class = 'card-body'> "There was an idea, Stark knows this, called the Avengers Initiative. The idea was to bring together a group of remarkable people, to see if they could become something more. To see if they could work together when we needed them to. To fight the battles that we never could. </p>
-      <a href = '#' class = 'button'>learn more </a>
-      </div>
-      </div>
+
+      <Switch>
+
+
+
+        <Route path = '/display'>
+        <Display getHeroes={getHeroes} hero={hero}/>
+        </Route>
+
+
+        <Route exact path = '/'>
+        <Homearray setHero={setHero} hero={hero}/>
+        </Route>
+
+       </Switch>
+
+
     </div>
+    </Router>
   );
 }
 
