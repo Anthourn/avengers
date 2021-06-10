@@ -7,7 +7,7 @@ export const Sidebar = ({comicData}) => {
     <h3> Comics List</h3>
     {    comicData.map((comics) => {
             return (
-                <p> {comics.name} </p>
+                <p className = 'comics'> {comics.name} </p>
             )
         })
 

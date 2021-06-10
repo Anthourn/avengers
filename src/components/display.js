@@ -20,7 +20,9 @@ export const Display  = ({hero}) => {
         }
     )
     .catch((error) => {
-        history.push('/')
+        return (
+            <div> Loading... </div>
+        )
     })
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {  useHistory } from 'react-router-dom'
+import Banner from './banner'
 
 export const Homearray = ({setHero}, {hero}) => {
     const history = useHistory('/display')
@@ -15,11 +16,13 @@ export const Homearray = ({setHero}, {hero}) => {
     }
     return (
         <>
-        <h1> Avengers initiative </h1>
+
+        <Banner/>
         <form onSubmit = {handleSubmit}>
         <input type = 'text' name='name' id= 'name' placeholder='search for your own'/>
         <input type = 'submit' value = 'search'/>
         </form>
+        <h3> or get started with some examples below...</h3>
         <div className = 'array'>
           <div id = 'iron man' className = 'card' style={{backgroundImage: `url("https://fsa.zobj.net/crop.php?r=ODHvEg26qtsIM0emcsdun5vkdjEiHUi98rkUvirliGGS7D-tgZk39Jw8aNP_L9WBfD6MYJZK-ZUZDLj2BJXkED42bGjJu-pQ9iFmVFserYdH1oGeEt3quFIz0ADLM5T6d6nr21Bpi1Sz_rf9")`}} >
           <div className = 'card-content'>

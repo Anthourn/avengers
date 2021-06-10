@@ -42,7 +42,7 @@
 /* TEMPLATE CSS END, MY CSS START */
 
 html {
-    background: GREY;
+    background: #f8f8ff
 }
 *::before,
 *::after{
@@ -63,13 +63,13 @@ body {
 .card {
     background-image: url('https://lovelytab.com/wp-content/uploads/2019/04/Avengers-Minimalist-Wallpapers-1024x640.jpg');
     background-size: cover;
-    padding: 10rem 0 0;
+    padding: 8rem 0 0;
     max-width: 35ch;
     color:white;
     /* overflow hidden fixes issue of bottom not having round corners due to card content  */
     border-radius: .8rem;
     overflow:hidden;
-    margin: 5ch;
+    margin: 1ch;
     transition: transform 500ms ease;
     background-position: center;
 }
@@ -196,8 +196,55 @@ body {
 
 .display-content{
     display: flex;
+
+}
+.description, .sidebar, .main-content {
+    width:100%;
+    padding:2ch;
+}
+.sidebar{
+    background: #F5F5DC;
+    border-radius: 20px;
+}
+.comics{
+    padding: 1ch;
 }
 
+.description{
+    display: flex;
+    font-size: 1.5em;
+    justify-content: center;
+    align-items: center;
+    background: #f8f8ff;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
 .display-photo{
     border-radius: 4000px;
+}
+
+h1 {
+    font-family: 'Inconsolata', monospace;
+    font-size: 4em;
+}
+
+.banner {
+    width: 100%;
+    background: url('https://mcuexchange.com/wp-content/uploads/2018/02/marvel-1440x512.jpg');
+
+    /* color: white; */
+    place-items: bottom;
+    text-align: bottom;
+    top: 0;
+    margin-top: -30;
+    /* font-size: 2ch; */
+    /* filter: brightness(); */
+}
+
+@media (hover)
+{
+    .banner{
+    height: 70ch;
+    background-size: cover;
+    background-position:bottom;
+}
 }

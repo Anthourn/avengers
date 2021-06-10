@@ -7,7 +7,11 @@ export const DisplayParent = ({heroData}) => {
         < div className = 'display-content' >
         <Sidebar comicData={heroData.data.results[0].comics.items}/>
         <MainContent heroBio= {heroData.data.results[0]}/>
+        <div className = 'description'>
         
+         {heroData.data.results[0].description}
+         </div>
+
         </div>
     )
 }

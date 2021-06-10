@@ -5,7 +5,7 @@ export const MainContent = ({heroBio}) => {
         <div className = 'main-content'>
         <h1> {heroBio.name} (Comics)</h1>
         <img className='display-photo' src ={`${heroBio.thumbnail.path}.jpg`} />
-        <p> {heroBio.description} </p>
+        
         <Link className = 'button' to='/'>Back </Link>
         </div>
     )
