@@ -1,12 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {  useHistory } from 'react-router-dom'
 
 export const Homearray = ({setHero}, {hero}) => {
-    const heroChange = (e) => {
-        setHero({[e.target.id] : hero})
-        // console.log(e.target.id)
+    const history = useHistory('/display')
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        setHero(e.target['name'].value)
+        console.log(e.target['name'].value)
+        console.log(hero)
+        history.push('/display')
+
     }
     return (
+        <>
+        <h1> Avengers initiative </h1>
+        <form onSubmit = {handleSubmit}>
+        <input type = 'text' name='name' id= 'name' placeholder='search for your own'/>
+        <input type = 'submit' value = 'search'/>
+        </form>
         <div className = 'array'>
           <div id = 'iron man' className = 'card' style={{backgroundImage: `url("https://fsa.zobj.net/crop.php?r=ODHvEg26qtsIM0emcsdun5vkdjEiHUi98rkUvirliGGS7D-tgZk39Jw8aNP_L9WBfD6MYJZK-ZUZDLj2BJXkED42bGjJu-pQ9iFmVFserYdH1oGeEt3quFIz0ADLM5T6d6nr21Bpi1Sz_rf9")`}} >
           <div className = 'card-content'>
@@ -94,6 +107,7 @@ export const Homearray = ({setHero}, {hero}) => {
 
 
           </div>
+          </>
 
     )
 }

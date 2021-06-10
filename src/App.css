@@ -188,3 +188,16 @@ body {
         transition-delay: 0ms !important;
     }
 }
+
+
+
+/* @@@@@@@@@@@@@@@DISPLAY PAGE @@@@@@@@@ */
+
+
+.display-content{
+    display: flex;
+}
+
+.display-photo{
+    border-radius: 4000px;
+}

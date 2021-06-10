@@ -3,11 +3,12 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Sidebar from './display-side'
 import DisplayParent from './display-parent'
+import Homearray from './array.js'
+import {  useHistory } from 'react-router-dom'
+
 export const Display  = ({hero}) => {
-
+    const history = useHistory('/')
     const [heroData, setData] = useState(null)
-
-
     const getHeroes = (name) => {
 
         axios.get(`https://gateway.marvel.com:443/v1/public/characters?name=${name}&apikey=a723f1e04ab084a12d0437077b3e90cd
@@ -16,7 +17,13 @@ export const Display  = ({hero}) => {
 
             setData(response.data)
             // console.log(heroData)
-        })}
+        }
+    )
+    .catch((error) => {
+        history.push('/')
+    })
+}
+
 
     useEffect(() => {
         if (!heroData){ getHeroes(hero)
