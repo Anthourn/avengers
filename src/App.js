@@ -5,8 +5,9 @@ import React, {useState, useEffect} from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import {Display} from './components/display'
 import Homearray from './components/array.js'
-function App() {
+import LoginPage from './components/loginpage'
 
+function App() {
     const [hero, setHero] = useState('Nick Fury')
     const getHeroes = (name) => {
         console.log('test')
@@ -21,9 +22,10 @@ function App() {
         console.log(hero)
     }, [] )
   return (
+
       <Router>
     <div className="App">
-      
+
 
       <Switch>
 
@@ -33,6 +35,9 @@ function App() {
         <Display getHeroes={getHeroes} hero={hero}/>
         </Route>
 
+        <Route path = '/login'>
+        <LoginPage/>
+        </Route>
 
         <Route exact path = '/'>
         <Homearray setHero={setHero} hero={hero}/>
@@ -43,7 +48,9 @@ function App() {
 
     </div>
     </Router>
-  );
+    
+);
+
 }
 
 export default App;

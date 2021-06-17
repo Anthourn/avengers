@@ -11,7 +11,7 @@ export const Display  = ({hero}) => {
     const [heroData, setData] = useState(null)
     const getHeroes = (name) => {
 
-        axios.get(`https://gateway.marvel.com:443/v1/public/characters?name=${name}&apikey=a723f1e04ab084a12d0437077b3e90cd
+        axios.get(`https://gateway.marvel.com:443/v1/public/characters?name=${name}&apikey=${process.env.REACT_APP_MARVEL_API_KEY}
     `).then((response) =>{
             // console.log(response.data)
 
@@ -30,7 +30,7 @@ export const Display  = ({hero}) => {
     useEffect(() => {
         if (!heroData){ getHeroes(hero)
         }
-        console.log(heroData)
+        
     }, [] )
     // because state is still null on ppage load im telling it to call this, while also making a conditional which will mount the loading page in the meantime to prevent crashes
     return (
