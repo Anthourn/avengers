@@ -11,7 +11,7 @@ export const Display  = ({hero}) => {
     const [heroData, setData] = useState(null)
     const getHeroes = (name) => {
 
-        axios.get(`https://gateway.marvel.com:443/v1/public/characters?name=${name}&apikey=${REACT_APP_MARVEL_API_KEY}
+        axios.get(`https://gateway.marvel.com:443/v1/public/characters?name=${name}&apikey=${process.env.REACT_APP_MARVEL_API_KEY}
     `).then((response) =>{
             // console.log(response.data)
 
