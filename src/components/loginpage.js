@@ -4,7 +4,11 @@ import {useRef, useEffect, useState} from 'react'
 import {AuthProvider} from './contexts/AuthContext'
 import AuthConfig from '../firebase'
 import {  useHistory } from 'react-router-dom'
- export const LoginPage = () => {
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+
+
+ export const LoginPage = (props) => {
      const history = useHistory('/')
      const emailRef = useRef()
      const passwordRef = useRef()
@@ -15,7 +19,7 @@ import {  useHistory } from 'react-router-dom'
      //     signUp(emailRef.current.value, passwordRef.current.value)
      // }
 
-     const [email, setEmail] = useState(null)
+     // const [email, setEmail] = useState(null)
 
 
      const signUp = (e) => {
@@ -29,7 +33,7 @@ import {  useHistory } from 'react-router-dom'
       .catch((err) => {
         console.log(err);
       });
-    setEmail(emailRef.current.value);
+    props.setEmail(emailRef.current.value);
     history.push('/')
   };
 
@@ -44,13 +48,23 @@ import {  useHistory } from 'react-router-dom'
       .catch((err) => {
         console.log(err);
       });
-      setEmail(emailRef.current.value)
+      props.setEmail(emailRef.current.value)
       history.push('/')
-    }
+
+      axios
+    .get("https://glacial-mesa-83865.herokuapp.com/testAPI")
+    .then((response) => {
+        props.setUserList(response.data)
+                    }
+
+                )
+            }
+
      useEffect(() => {
-         console.log(AuthConfig)
+
      }, [] )
     return(<>
+        {props.email ? <p>{props.email}</p> : ''}
         <p>Sign up</p>
         <form onSubmit={signUp}>
         <label for ='email'>Email</label>
@@ -59,8 +73,7 @@ import {  useHistory } from 'react-router-dom'
         <label for ='password'>Password</label>
         <input type = 'password' id = 'password' ref ={passwordRef} required/>
 
-        <label for ='password-confirm'>Confirm Password</label>
-        <input type = 'password' id = 'password-confirm' ref ={passwordConfirmRef} required/>
+        
         <button type = 'submit'> Sign up</button>
         </form>
 
@@ -73,9 +86,9 @@ import {  useHistory } from 'react-router-dom'
         <input type = 'password' id = 'password' ref ={passwordRef} required/>
 
 
-        <button type = 'submit'> Sign up</button>
+        <button type = 'submit'> Sign in</button>
         </form>
-
+        <Link className = 'button' to='/'>Back </Link>
 
         </>
     )

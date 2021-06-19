@@ -6,8 +6,18 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import {Display} from './components/display'
 import Homearray from './components/array.js'
 import LoginPage from './components/loginpage'
+import Footer from './components/footer.js'
+import Library from './components/library.js'
+import firebase from 'firebase'
+import 'firebase/auth'
+import 'firebase/firestore'
+const admin = require ('firebase-admin')
+
+
 
 function App() {
+    const[userList, setUserList]= useState([])
+    const [email, setEmail] = useState(null)
     const [hero, setHero] = useState('Nick Fury')
     const getHeroes = (name) => {
         console.log('test')
@@ -17,10 +27,27 @@ function App() {
 
 
         })}
-    useEffect(() => {
-        // getHeroes(hero)
-        console.log(hero)
-    }, [] )
+        useEffect(() => {
+
+            axios
+          .get("https://glacial-mesa-83865.herokuapp.com/testAPI")
+          .then((response) => {
+              response.data.map((items) => {
+                  if(items.createdBy=== email ) {
+                      userList.push(
+                          {name:items.library[0],
+                              id:items._id,
+                          }
+
+                      )
+                  }
+              })
+              console.log(userList)
+              console.log(response.data[0].id)
+          })
+
+
+        }, [] )
   return (
 
       <Router>
@@ -32,23 +59,28 @@ function App() {
 
 
         <Route path = '/display'>
-        <Display getHeroes={getHeroes} hero={hero}/>
+        <Display  getHeroes={getHeroes} email={email} hero={hero}/>
         </Route>
 
         <Route path = '/login'>
-        <LoginPage/>
+        <LoginPage email={email} setEmail={setEmail} userList={userList} setUserList={setUserList} />
         </Route>
 
         <Route exact path = '/'>
-        <Homearray setHero={setHero} hero={hero}/>
+        <Homearray email={email}setHero={setHero} hero={hero}/>
+        </Route>
+
+        <Route path = '/library'>
+        <Library  getHeroes={getHeroes} userList={userList} email={email} hero={hero}/>
         </Route>
 
        </Switch>
 
-
+       <Footer email={email} setEmail={setEmail} userList={userList} setUserList={setUserList}/>
     </div>
     </Router>
-    
+
+
 );
 
 }

@@ -6,7 +6,7 @@ import DisplayParent from './display-parent'
 import Homearray from './array.js'
 import {  useHistory } from 'react-router-dom'
 
-export const Display  = ({hero}) => {
+export const Display  = (props) => {
     const history = useHistory('/')
     const [heroData, setData] = useState(null)
     const getHeroes = (name) => {
@@ -28,14 +28,14 @@ export const Display  = ({hero}) => {
 
 
     useEffect(() => {
-        if (!heroData){ getHeroes(hero)
+        if (!heroData){ getHeroes(props.hero)
         }
 
     }, [] )
     // because state is still null on ppage load im telling it to call this, while also making a conditional which will mount the loading page in the meantime to prevent crashes
     return (
         <>
-        { heroData ? <DisplayParent heroData={heroData}/> : <div> Loading... </div>}
+        { heroData ? <DisplayParent db={props.db} email={props.email} heroData={heroData}/> : <div> Loading... </div>}
 </>
 
     )

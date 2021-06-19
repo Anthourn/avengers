@@ -206,10 +206,12 @@ body {
     background: #F5F5DC;
     border-radius: 20px;
 }
-.comics{
+.comics, .comics-log{
     padding: 1ch;
 }
-
+.comics-log:hover{
+    color: grey;
+}
 .description{
     display: flex;
     font-size: 1.5em;
@@ -225,6 +227,15 @@ body {
 h1 {
     font-family: 'Inconsolata', monospace;
     font-size: 4em;
+}
+li{
+    list-style: none;
+}
+.footer{
+    bottom: 0;
+    /* position:absolute; */
+    margin-top: 5rem;
+
 }
 
 .banner {
