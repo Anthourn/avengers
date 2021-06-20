@@ -8,8 +8,7 @@ import Homearray from './components/array.js'
 import LoginPage from './components/loginpage'
 import Footer from './components/footer.js'
 import Library from './components/library.js'
-import firebase from 'firebase'
-import 'firebase/auth'
+
 
 
 
