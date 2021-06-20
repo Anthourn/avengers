@@ -61,7 +61,7 @@ import axios from 'axios'
             }
 
      useEffect(() => {
-
+         console.log(AuthConfig)
      }, [] )
     return(<>
         {props.email ? <p>{props.email}</p> : ''}
@@ -73,7 +73,7 @@ import axios from 'axios'
         <label for ='password'>Password</label>
         <input type = 'password' id = 'password' ref ={passwordRef} required/>
 
-        
+
         <button type = 'submit'> Sign up</button>
         </form>
 
