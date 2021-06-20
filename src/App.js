@@ -11,7 +11,7 @@ import Library from './components/library.js'
 import firebase from 'firebase'
 import 'firebase/auth'
 import 'firebase/firestore'
-const admin = require ('firebase-admin')
+
 
 
 
