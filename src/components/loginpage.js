@@ -6,6 +6,17 @@ import AuthConfig from '../firebase'
 import {  useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+// Firebase App (the core Firebase SDK) is always required and must be listed first
+import firebase from "firebase/app";
+// If you are using v7 or any earlier version of the JS SDK, you should import firebase using namespace import
+// import * as firebase from "firebase/app"
+
+// If you enabled Analytics in your project, add the Firebase SDK for Analytics
+import "firebase/analytics";
+
+// Add the Firebase products that you want to use
+import "firebase/auth";
+import "firebase/firestore";
 
 
  export const LoginPage = (props) => {
@@ -24,9 +35,7 @@ import axios from 'axios'
 
      const signUp = (e) => {
     e.preventDefault();
-    AuthConfig
-      .auth()
-      .createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
+    firebase.auth().createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
       .then((user) => {
         console.log(user);
       })
@@ -39,7 +48,7 @@ import axios from 'axios'
 
     const signIn = (e) => {
         e.preventDefault()
-        AuthConfig
+        firebase
         .auth()
         .signInWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
         .then((user) => {
