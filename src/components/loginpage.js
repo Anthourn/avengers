@@ -61,7 +61,7 @@ import axios from 'axios'
      useEffect(() => {
          console.log(fire)
      }, [] )
-    return(<>
+    return(<div className="login">
         {props.email ? <p>{props.email}</p> : ''}
         <p>Sign up</p>
         <form onSubmit={signUp}>
@@ -88,7 +88,7 @@ import axios from 'axios'
         </form>
         <Link className = 'button' to='/'>Back </Link>
 
-        </>
+        </div>
     )
 }
 export default LoginPage
